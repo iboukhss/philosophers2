@@ -6,7 +6,7 @@
 /*   By: iboukhss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:10:32 by iboukhss          #+#    #+#             */
-/*   Updated: 2025/03/25 13:25:38 by iboukhss         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:50:55 by iboukhss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		destroy_simulation(t_simulation *sim);
 long	get_time_in_ms(void);
 void	sleep_in_ms(int time_in_ms);
 void	print_timestamp(t_philosopher *philo, const char *msg);
+int		my_atoi(const char *str);
 
 // Simulation utils
 bool	simulation_is_running(t_simulation *sim);

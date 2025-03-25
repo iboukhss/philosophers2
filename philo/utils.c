@@ -6,7 +6,7 @@
 /*   By: iboukhss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:13:22 by iboukhss          #+#    #+#             */
-/*   Updated: 2025/03/25 11:24:48 by iboukhss         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:13:35 by iboukhss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,18 @@ void	print_timestamp(t_philosopher *philo, const char *msg)
 		printf("%8ld %4d %s\n", time_elapsed, philo->id, msg);
 		pthread_mutex_unlock(&philo->sim->print_lock);
 	}
+}
+
+int	my_atoi(const char *str)
+{
+	int	res;
+
+	res = 0;
+	while (*str >= '0' && *str <= '9')
+	{
+		res *= 10;
+		res += *str - '0';
+		str++;
+	}
+	return (res);
 }
