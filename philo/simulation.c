@@ -6,7 +6,7 @@
 /*   By: iboukhss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:22:55 by iboukhss          #+#    #+#             */
-/*   Updated: 2025/03/25 13:22:57 by iboukhss         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:32:00 by iboukhss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 
 static int	init_philosophers(t_simulation *sim)
 {
-	for (int i = 0; i < sim->num_philos; i++)
+	int	i;
+
+	i = 0;
+	while (i < sim->num_philos)
 	{
 		sim->philos[i].id = i + 1;
 		sim->philos[i].left_fork = &sim->forks[i];
@@ -27,22 +30,30 @@ static int	init_philosophers(t_simulation *sim)
 		sim->philos[i].done_eating = false;
 		pthread_mutex_init(&sim->philos[i].lock, NULL);
 		sim->philos[i].sim = sim;
+		i++;
 	}
 	return (0);
 }
 
 static int	init_forks(pthread_mutex_t *forks, int num_forks)
 {
-	for (int i = 0; i < num_forks; i++)
+	int	i;
+
+	i = 0;
+	while (i < num_forks)
 	{
 		pthread_mutex_init(&forks[i], NULL);
+		i++;
 	}
 	return (0);
 }
 
 static int	distribute_tokens(t_philosopher *philos, int num_philos)
 {
-	for (int i = 0; i < num_philos; i++)
+	int	i;
+
+	i = 0;
+	while (i < num_philos)
 	{
 		if (num_philos % 2 == 0)
 		{
@@ -58,6 +69,7 @@ static int	distribute_tokens(t_philosopher *philos, int num_philos)
 			else
 				philos[i].has_token = false;
 		}
+		i++;
 	}
 	return (0);
 }
@@ -79,10 +91,14 @@ int	init_simulation(t_simulation *sim)
 
 int	destroy_simulation(t_simulation *sim)
 {
-	for (int i = 0; i < sim->num_philos; i++)
+	int	i;
+
+	i = 0;
+	while (i < sim->num_philos)
 	{
 		pthread_mutex_destroy(&sim->forks[i]);
 		pthread_mutex_destroy(&sim->philos[i].lock);
+		i++;
 	}
 	free(sim->forks);
 	free(sim->philos);

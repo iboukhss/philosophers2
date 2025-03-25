@@ -6,7 +6,7 @@
 /*   By: iboukhss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 13:16:41 by iboukhss          #+#    #+#             */
-/*   Updated: 2025/03/25 13:24:43 by iboukhss         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:28:51 by iboukhss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,24 @@ static int	run_simulation(t_simulation *sim)
 {
 	t_philosopher	*philos;
 	int				num_philos;
+	int				i;
 
 	philos = sim->philos;
 	num_philos = sim->num_philos;
 	sim->start_time = get_time_in_ms();
 	pthread_create(&sim->monitor, NULL, monitor_routine, sim);
-	for (int i = 0; i < num_philos; i++)
+	i = 0;
+	while (i < num_philos)
 	{
 		pthread_create(&philos[i].thread, NULL, philo_routine, &philos[i]);
+		i++;
 	}
 	pthread_join(sim->monitor, NULL);
-	for (int i = 0; i < num_philos; i++)
+	i = 0;
+	while (i < num_philos)
 	{
 		pthread_join(sim->philos[i].thread, NULL);
+		i++;
 	}
 	sim->stop_time = get_time_in_ms();
 	return (0);

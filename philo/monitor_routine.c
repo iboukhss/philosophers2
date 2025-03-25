@@ -6,7 +6,7 @@
 /*   By: iboukhss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:12:08 by iboukhss          #+#    #+#             */
-/*   Updated: 2025/03/25 11:12:58 by iboukhss         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:33:07 by iboukhss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,26 @@
 
 static void	monitor_meals(t_simulation *sim)
 {
-	for (int i = 0; i < sim->num_philos; i++)
+	int	i;
+
+	i = 0;
+	while (i < sim->num_philos)
 	{
 		if (!philosopher_is_done_eating(&sim->philos[i]))
 		{
 			return ;
 		}
+		i++;
 	}
 	stop_simulation(sim);
 }
 
 static void	monitor_deaths(t_simulation *sim)
 {
-	for (int i = 0; i < sim->num_philos; i++)
+	int	i;
+
+	i = 0;
+	while (i < sim->num_philos)
 	{
 		if (philosopher_died(&sim->philos[i]))
 		{
@@ -34,6 +41,7 @@ static void	monitor_deaths(t_simulation *sim)
 			stop_simulation(sim);
 			return ;
 		}
+		i++;
 	}
 }
 
