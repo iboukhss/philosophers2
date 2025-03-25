@@ -6,7 +6,7 @@
 /*   By: iboukhss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:10:32 by iboukhss          #+#    #+#             */
-/*   Updated: 2025/03/25 12:17:49 by iboukhss         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:25:38 by iboukhss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ typedef struct s_philosopher
 	pthread_mutex_t	lock;
 	t_simulation	*sim;
 }	t_philosopher;
+
+// Simulation
+int		init_simulation(t_simulation *sim);
+int		destroy_simulation(t_simulation *sim);
 
 // Main utils
 long	get_time_in_ms(void);
