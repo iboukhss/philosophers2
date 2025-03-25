@@ -6,7 +6,7 @@
 /*   By: iboukhss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 13:16:41 by iboukhss          #+#    #+#             */
-/*   Updated: 2025/03/24 21:52:45 by iboukhss         ###   ########.fr       */
+/*   Updated: 2025/03/25 10:51:39 by iboukhss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,6 @@ static long	get_time_in_ms(void)
 
 	gettimeofday(&time, NULL);
 	return (time.tv_sec * 1000L + time.tv_usec / 1000L);
-}
-
-static long	get_time_in_us(void)
-{
-	struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000000L + time.tv_usec);
 }
 
 static void	sleep_in_ms(int time_in_ms)
