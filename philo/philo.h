@@ -6,15 +6,15 @@
 /*   By: iboukhss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:10:32 by iboukhss          #+#    #+#             */
-/*   Updated: 2025/03/25 12:08:40 by iboukhss         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:17:49 by iboukhss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-#include <pthread.h>
-#include <stdbool.h>
+# include <pthread.h>
+# include <stdbool.h>
 
 typedef struct s_simulation		t_simulation;
 typedef struct s_philosopher	t_philosopher;

@@ -6,7 +6,7 @@
 /*   By: iboukhss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:14:04 by iboukhss          #+#    #+#             */
-/*   Updated: 2025/03/25 12:09:57 by iboukhss         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:20:14 by iboukhss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,12 @@ void	*philo_routine(void *arg)
 	philo->start_time = get_time_in_ms();
 	philo->last_meal_time = philo->start_time;
 	pthread_mutex_unlock(&philo->lock);
-	while (simulation_is_running(philo->sim) && !philosopher_is_done_eating(philo))
+	while (simulation_is_running(philo->sim))
 	{
+		if (philosopher_is_done_eating(philo))
+		{
+			break ;
+		}
 		start_thinking(philo);
 		wait_for_token(philo);
 		pick_up_forks(philo);
