@@ -1,23 +1,27 @@
-MAKEFLAGS += --no-print-directory
+NAME = philo
 
+SRCS = philo.c philo_routine.c monitor_routine.c philo_utils.c sim_utils.c utils.c
+OBJS = $(SRCS:.c=.o)
+
+MAKEFLAGS += --no-print-directory
 CFLAGS += -Wall -Wextra -Werror
-LDFLAGS = -lpthread
+LDLIBS = -lpthread
 
 .PHONY: all clean fclean re
 
-all: philo
+all: $(NAME)
 
-philo: philo.o
-	$(CC) $(CFLAGS) -o philo philo.o $(LDFLAGS)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDLIBS)
 
-philo.o: philo.c
-	$(CC) $(CFLAGS) -o philo.o philo.c
+%.o: %.c
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -f philo.o
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -f philo
+	rm -f $(NAME)
 
 re:
 	$(MAKE) fclean
