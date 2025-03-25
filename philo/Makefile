@@ -1,6 +1,6 @@
 NAME = philo
 
-SRCS = philo.c philo_routine.c monitor_routine.c philo_utils.c sim_utils.c utils.c
+SRCS = philo.c philo_routine.c monitor_routine.c philo_utils.c sim_utils.c token_utils.c fork_utils.c utils.c
 OBJS = $(SRCS:.c=.o)
 
 MAKEFLAGS += --no-print-directory

@@ -6,7 +6,7 @@
 /*   By: iboukhss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:10:32 by iboukhss          #+#    #+#             */
-/*   Updated: 2025/03/25 11:40:27 by iboukhss         ###   ########.fr       */
+/*   Updated: 2025/03/25 12:08:40 by iboukhss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_philosopher
 	t_simulation	*sim;
 }	t_philosopher;
 
-// General utils
+// Main utils
 long	get_time_in_ms(void);
 void	sleep_in_ms(int time_in_ms);
 void	print_timestamp(t_philosopher *philo, const char *msg);
@@ -64,6 +64,14 @@ void	stop_simulation(t_simulation *sim);
 bool	philosopher_has_token(t_philosopher *philo);
 bool	philosopher_is_done_eating(t_philosopher *philo);
 bool	philosopher_died(t_philosopher *philo);
+
+// Token utils
+void	wait_for_token(t_philosopher *philo);
+void	pass_token(t_philosopher *philo);
+
+// Fork utils
+void	pick_up_forks(t_philosopher *philo);
+void	put_down_forks(t_philosopher *philo);
 
 // Main routines
 void	*philo_routine(void *arg);
